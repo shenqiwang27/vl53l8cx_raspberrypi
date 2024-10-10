@@ -2,7 +2,7 @@
 
 import time
 from ctypes import *
-from smbus2 import SMBus
+# from smbus2 import SMBus
 
 VL53L8CX_GOOD_ACCURACY_MODE      = 0   # Good Accuracy mode
 VL53L8CX_BETTER_ACCURACY_MODE    = 1   # Better Accuracy mode
@@ -10,11 +10,11 @@ VL53L8CX_BEST_ACCURACY_MODE      = 2   # Best Accuracy mode
 VL53L8CX_LONG_RANGE_MODE         = 3   # Longe Range mode
 VL53L8CX_HIGH_SPEED_MODE         = 4   # High Speed mode
 
-i2cbus = SMBus(1)
+# i2cbus = SMBus(1)
 
 class VL53L8CX:
     def __init__(self, bus_number=1, device_address=0x52):
-        self.i2cbus = SMBus(bus_number)
+        # self.i2cbus = SMBus(bus_number)
         self.device_address = device_address
         
         
