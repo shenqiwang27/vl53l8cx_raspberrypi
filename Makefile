@@ -18,7 +18,7 @@ INCLUDES = \
 	
 
 PYTHON_INCLUDES = \
-    -I/usr/include/python3.10
+    -I/usr/include/python3.11
 
 VPATH = \
 	$(API_DIR)/src \
