@@ -61,10 +61,10 @@ class VL53L8CX:
         return ret_val
     
     def init_and_start_ranging(self):
-        self.lib.vl53l8cx_set_resolution(byref(self.dev), 64)  # 8x8
+        self.lib.vl53l8cx_set_resolution(byref(self.dev), 64) 
         self.lib.vl53l8cx_set_ranging_frequency_hz(byref(self.dev), 10)
         self.lib.vl53l8cx_set_integration_time_ms(byref(self.dev), 50)
-        self.lib.vl53l8cx_set_target_order(byref(self.dev), 1)  # Closest
+        self.lib.vl53l8cx_set_target_order(byref(self.dev), 1)  
         self.lib.vl53l8cx_start_ranging(byref(self.dev))
     
     def read_distance(self):
@@ -74,4 +74,4 @@ class VL53L8CX:
             time.sleep(0.01)
         
         self.lib.vl53l8cx_get_ranging_data(byref(self.dev), byref(self.results))
-        return self.results.distance_mm[4*8 + 4]  # 中心点距离
+        return self.results.distance_mm[4*8 + 4] 
