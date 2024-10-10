@@ -18,7 +18,7 @@ class VL53L8CX:
         self.device_address = device_address
         
         
-        self.lib = CDLL("../bin/vl53l8Cx_python.so")
+        self.lib = CDLL("../bin/vl53l8cx_python.so")
         
         
         class VL53L8CX_Configuration(Structure):
