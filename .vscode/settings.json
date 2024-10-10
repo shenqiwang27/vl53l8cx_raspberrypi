@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "vl53l8cx_plugin_detection_thresholds.h": "c",
+        "time.h": "c",
+        "errno.h": "c",
+        "pthread.h": "c",
+        "type_traits": "c"
+    }
+}
