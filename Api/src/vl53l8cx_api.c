@@ -242,11 +242,13 @@ uint8_t vl53l8cx_init(
   p_dev->default_configuration = (uint8_t *)VL53L8CX_DEFAULT_CONFIGURATION;
   p_dev->is_auto_stop_enabled = (uint8_t)0x0;
   printf("start_1 vl53l8cx_init\n");
-  printf("address is %d\n", &(p_dev->platform) );
+  printf("address is %d\n", p_dev->platform.address );
   printf("start_1_1 vl53l8cx_init\n");
+  printf("status is %d\n", status);
   /* SW reboot sequence */
   status |= VL53L8CX_WrByte(&(p_dev->platform), 0x7fff, 0x00);
   printf("start_2 vl53l8cx_init\n");
+  printf("status is %d\n", status);
   status |= VL53L8CX_WrByte(&(p_dev->platform), 0x0009, 0x04);
 
   status |= VL53L8CX_WrByte(&(p_dev->platform), 0x000F, 0x40);

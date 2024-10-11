@@ -43,8 +43,8 @@ class VL53L8CX:
         
  
         print('before init')
-        tof_lib.init_and_start_vl53l8cx()
-        print('finish init')
+        status = tof_lib.init_and_start_vl53l8cx()
+        print('finish init, status is:', status)
     
     
     def read_distance(self):

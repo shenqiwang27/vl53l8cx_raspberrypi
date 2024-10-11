@@ -16,7 +16,7 @@ static VL53L8CX_ResultsData *Results=NULL;
 
 uint8_t init_and_start_vl53l8cx(void)
 {
-    uint8_t status=255;
+    uint8_t status=212;
 
     printf("qqqqq init\n");
     Dev = (VL53L8CX_Configuration *) malloc(sizeof(VL53L8CX_Configuration));
