@@ -52,6 +52,6 @@ class VL53L8CX:
     
         time.sleep(0.01)
         
-        distance_array = tof_lib.read_vl53l8cx_distance()
-        dis_arr = [distance_array[i] for i in range(64)]
-        return dis_arr[4*8 + 4] 
+        distance = tof_lib.read_vl53l8cx_distance()
+        # dis_arr = [distance_array[i] for i in range(64)]
+        return distance
