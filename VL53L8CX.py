@@ -5,7 +5,7 @@ from ctypes import *
 from smbus2 import SMBus
 i2cbus = SMBus(1)
 
-def i2c_read(self, address, reg, data_p, length):
+def i2c_read(address, reg, data_p, length):
     ret_val = 0
     try:
         result = i2cbus.read_i2c_block_data(address, reg, length)
