@@ -39,9 +39,8 @@ i2c_write_func = I2C_FUNC(i2c_write)
 tof_lib.VL53L8CX_set_i2c(i2c_read_func, i2c_write_func)
 
 class VL53L8CX:
-    def __init__(self, device_address=0x52):
-        # self.
-        self.device_address = device_address
+    def __init__(self):
+        
         
  
         print('before init')

@@ -21,7 +21,7 @@ uint8_t init_and_start_vl53l8cx(void)
     printf("qqqqq init\n");
     Dev = (VL53L8CX_Configuration *) malloc(sizeof(VL53L8CX_Configuration));
     memset(Dev, 0, sizeof(VL53L8CX_Configuration));
-    Dev->platform.address = 0x52;
+    Dev->platform.address = 0x29;
     
 
     Results = (VL53L8CX_ResultsData *) malloc(sizeof(VL53L8CX_ResultsData));
