@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import time,os
+import time,os,sys
 from ctypes import *
 from smbus2 import SMBus
 i2cbus = SMBus(1)
@@ -12,6 +12,7 @@ def i2c_read(address, reg, data_p, length):
         for i in range(length):
             data_p[i] = result[i]
     except IOError:
+        print('IOError')
         ret_val = -1
     return ret_val
 
@@ -22,6 +23,7 @@ def i2c_write(address, reg, data_p, length):
     try:
         i2cbus.write_i2c_block_data(address, reg, data)
     except IOError:
+        print('IOError')
         ret_val = -1
     return ret_val
 
@@ -45,6 +47,9 @@ class VL53L8CX:
         print('before init')
         status = tof_lib.init_and_start_vl53l8cx()
         print('finish init, status is:', status)
+        if status !=0:
+            print('init failed')
+            sys.exit(1)
     
     
     def read_distance(self):
