@@ -12,7 +12,7 @@ def i2c_read(address, reg, data_p, length):
         for i in range(length):
             data_p[i] = result[i]
     except IOError:
-        print('IOError')
+        print('read IOError')
         ret_val = -1
     return ret_val
 
@@ -23,7 +23,7 @@ def i2c_write(address, reg, data_p, length):
     try:
         i2cbus.write_i2c_block_data(address, reg, data)
     except IOError:
-        print('IOError')
+        print('write IOError')
         ret_val = -1
     return ret_val
 
