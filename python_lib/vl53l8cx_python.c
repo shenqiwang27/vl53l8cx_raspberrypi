@@ -78,5 +78,5 @@ uint8_t read_vl53l8cx_distance(int16_t *p_distance)
 
     *p_distance = Results->distance_mm[4*8 + 4];  
 
-    return VL53L8CX_STATUS_OK;
+    return p_distance;
 }
