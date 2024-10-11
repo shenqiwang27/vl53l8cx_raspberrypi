@@ -6,7 +6,7 @@ from ctypes import *
 lib = CDLL("./bin/vl53l8cx_python.so")
 tof = VL53L8CX()
 
-tof.init_and_start_ranging()
+
 for count in range(1,1001):
     distance = tof.read_distance()
     if (distance > 0):

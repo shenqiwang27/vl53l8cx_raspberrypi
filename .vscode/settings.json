@@ -4,6 +4,9 @@
         "time.h": "c",
         "errno.h": "c",
         "pthread.h": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "string.h": "c",
+        "unistd.h": "c",
+        "ctype.h": "c"
     }
 }

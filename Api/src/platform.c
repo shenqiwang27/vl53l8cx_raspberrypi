@@ -48,6 +48,7 @@ uint8_t VL53L8CX_WrByte(
 		uint16_t RegisterAdress,
 		uint8_t value)
 {
+  printf("start VL53L8CX_WrByte");
 	return i2c_write(p_platform, RegisterAdress, &value, 1);
 }
 
