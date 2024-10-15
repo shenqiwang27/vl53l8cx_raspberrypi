@@ -16,6 +16,14 @@
 
 #include <stdint.h>
 #include <string.h>
+#include <stdio.h>
+#include <errno.h>
+#include <linux/i2c-dev.h>
+#include <sys/ioctl.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+#define MAX_I2C_BUFFER_SIZE 8192
 
 /**
  * @brief Structure VL53L8CX_Platform needs to be filled by the customer,
