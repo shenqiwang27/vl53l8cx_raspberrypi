@@ -10,7 +10,7 @@ except IOError:
     ret_val = -1
     
 try:
-    i2cbus.read_i2c_block_data(0x29, 0x7fff, 1)
+    i2cbus.read_byte_data(0x29, 0x7fff)
 except IOError:
     print('read IOError')
     ret_val = -1
