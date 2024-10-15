@@ -27,14 +27,14 @@ uint8_t init_and_start_vl53l8cx(void)
     Results = (VL53L8CX_ResultsData *) malloc(sizeof(VL53L8CX_ResultsData));
     memset(Results, 0, sizeof(VL53L8CX_ResultsData));
 
-    status = vl53l8cx_is_alive(&Dev, &isAlive);
+    status = vl53l8cx_is_alive(Dev, &isAlive);
 	if(!isAlive || status)
 	{
 		printf("VL53L8CX not detected at requested address\n");
 		return status;
 	}
 
-    status = vl53l8cx_init(&Dev);
+    status = vl53l8cx_init(Dev);
 	if (status)
 	{
 		printf("VL53L8CX ULD Loading failed\n");
