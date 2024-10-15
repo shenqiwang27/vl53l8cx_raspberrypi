@@ -74,7 +74,7 @@ uint8_t init_and_start_vl53l8cx(void)
     return status;
 }
 
-uint8_t read_vl53l8cx_distance(void)
+int16_t read_vl53l8cx_distance(void)
 {
     uint8_t status;
     uint8_t isReady;
