@@ -52,9 +52,6 @@ class VL53L8CX:
     
     
     def read_distance(self):
-        is_ready = c_uint8(0)
-    
-        time.sleep(0.01)
         
         distance = tof_lib.read_vl53l8cx_distance()
         # dis_arr = [distance_array[i] for i in range(64)]
