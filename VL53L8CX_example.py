@@ -20,7 +20,8 @@ def print_8x8_grid(python_array):
     for i in range(8):
         for j in range(8):
             index = i * 8 + j
-            print(f"{python_array[index]:4}", end="")
+            value = python_array[index] / 100  # Divide by 100
+            print(f"{value:7.2f}", end="")  # 7 total width, 2 decimal places
         print()  # New line after each row
     
     # Flush the output
