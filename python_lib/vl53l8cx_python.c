@@ -21,7 +21,7 @@ uint8_t init_and_start_vl53l8cx(void)
     printf("qqqqq init\n");
     
     Dev.platform.address = 0x29;
-    
+    Dev.platform.fd = open("/dev/i2c-1", O_RDWR);
 
     status = vl53l8cx_is_alive(&Dev, &isAlive);
 	if(!isAlive || status)
