@@ -29,7 +29,7 @@ from ctypes import *
 
 
 tof_lib = CDLL("./bin/vl53l8cx_python.so")
-
+tof_lib.read_vl53l8cx_distance.restype = POINTER(c_int16)
 
 # I2C_FUNC = CFUNCTYPE(c_int, c_uint16, c_uint16, 
 #                                     POINTER(c_uint8), c_uint32)

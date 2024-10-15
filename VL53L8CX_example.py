@@ -30,8 +30,8 @@ def print_8x8_grid(python_array):
 while True:
     count +=1
     distance = tof.read_distance()
-    print(distance)
-    # distance_array = [distance[i] for i in range(64)]
-    # print_8x8_grid(distance_array)
+    # print(distance)
+    distance_array = [distance[i] for i in range(64)]
+    print_8x8_grid(distance_array)
 
 
