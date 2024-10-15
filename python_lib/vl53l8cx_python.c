@@ -18,7 +18,6 @@ uint8_t init_and_start_vl53l8cx(void)
 {
     uint8_t status=255, isAlive;
 
-    printf("qqqqq init\n");
     
     Dev.platform.address = 0x29;
     Dev.platform.fd = open("/dev/i2c-1", O_RDWR);
@@ -55,20 +54,20 @@ uint8_t init_and_start_vl53l8cx(void)
         return status;
     }
 
-    // status = vl53l8cx_set_ranging_frequency_hz(Dev, 10);
-    // if(status) {
-    //     return status;
-    // }
+    status = vl53l8cx_set_ranging_frequency_hz(&Dev, 10);
+    if(status) {
+        return status;
+    }
 
-    // status = vl53l8cx_set_integration_time_ms(Dev, 50);
-    // if(status) {
-    //     return status;
-    // }
+    status = vl53l8cx_set_integration_time_ms(&Dev, 50);
+    if(status) {
+        return status;
+    }
 
-    // status = vl53l8cx_set_target_order(Dev, VL53L8CX_TARGET_ORDER_CLOSEST);
-    // if(status) {
-    //     return status;
-    // }
+    status = vl53l8cx_set_target_order(&Dev, VL53L8CX_TARGET_ORDER_CLOSEST);
+    if(status) {
+        return status;
+    }
 
     status = vl53l8cx_start_ranging(&Dev);
     
