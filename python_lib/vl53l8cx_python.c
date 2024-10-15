@@ -9,8 +9,8 @@
 #include "platform.h"
 
 
-static VL53L8CX_Configuration Dev;
-static VL53L8CX_ResultsData Results;
+VL53L8CX_Configuration Dev;
+VL53L8CX_ResultsData Results;
 
 
 
@@ -22,6 +22,17 @@ uint8_t init_and_start_vl53l8cx(void)
     
     Dev.platform.address = 0x29;
     Dev.platform.fd = open("/dev/i2c-1", O_RDWR);
+    if (Dev.platform.fd < 0)
+	{
+		perror("Failed to open i2c bus.");
+		return 1;
+	}
+	if (ioctl(Dev.platform.fd, I2C_SLAVE, 0x29) < 0) 
+	{
+		perror("Failed to acquire bus access.");
+		close(Dev.platform.fd);
+		return status;
+	}
 
     status = vl53l8cx_is_alive(&Dev, &isAlive);
 	if(!isAlive || status)
