@@ -1,10 +1,10 @@
 
 import time
-from VL53L8CX import VL53L8CX
+import VL53L8CX
 from ctypes import *
 
-lib = CDLL("./bin/vl53l8cx_python.so")
-tof = VL53L8CX()
+
+tof = VL53L8CX.VL53L8CX()
 
 
 for count in range(1,10):

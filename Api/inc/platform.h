@@ -31,7 +31,7 @@ typedef struct
 	 * needs to be added */
 	/* Example for most standard platform : I2C address of sensor */
     uint16_t  			address;
-
+	int				fd;    // file descriptor used for wiringPi
 } VL53L8CX_Platform;
 
 /*
