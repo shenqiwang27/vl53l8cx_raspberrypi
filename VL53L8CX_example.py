@@ -40,12 +40,12 @@ while True:
     distance_matrix = np.clip(distance_array, 0, 4000)
     distance_matrix = distance_matrix / 4000
     distance_matrix = np.uint8(distance_matrix*255)
-    resized_image = cv2.resize(distance_matrix, (400, 400), interpolation=cv2.INTER_NEAREST)
+    # resized_image = cv2.resize(distance_matrix, (400, 400), interpolation=cv2.INTER_NEAREST)
     
-    cv2.imshow('Distance Matrix', resized_image)
+    cv2.imshow('Distance Matrix', distance_matrix)
     cv2.waitKey(1)
     
-    print(json.dumps(distance_matrix.tolist()))
+    # print(json.dumps(distance_matrix.tolist()))
 
 
 
