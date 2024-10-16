@@ -36,11 +36,12 @@ while True:
     # print(distance)
     distance_array = [distance[i] for i in range(64)]
     # print_8x8_grid(distance_array)
-    distance_matrix = np.array(distance_array).reshape( 8, 8, 1)
+    
     print(distance_matrix.shape)
     distance_matrix = np.clip(distance_array, 0, 4000)
     distance_matrix = distance_matrix / 4000
     distance_matrix = np.uint8(distance_matrix*255)
+    distance_matrix = np.array(distance_array).reshape( 1, 8, 8)
     print(distance_matrix)
     # resized_image = cv2.resize(distance_matrix, (400, 400), interpolation=cv2.INTER_NEAREST)
     
