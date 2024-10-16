@@ -54,20 +54,20 @@ uint8_t init_and_start_vl53l8cx(void)
         return status;
     }
 
-    status = vl53l8cx_set_ranging_frequency_hz(&Dev, 10);
+    status = vl53l8cx_set_ranging_frequency_hz(&Dev, 15);
     if(status) {
         return status;
     }
 
-    status = vl53l8cx_set_integration_time_ms(&Dev, 50);
-    if(status) {
-        return status;
-    }
+    // status = vl53l8cx_set_integration_time_ms(&Dev, 50);
+    // if(status) {
+    //     return status;
+    // }
 
-    status = vl53l8cx_set_target_order(&Dev, VL53L8CX_TARGET_ORDER_CLOSEST);
-    if(status) {
-        return status;
-    }
+    // status = vl53l8cx_set_target_order(&Dev, VL53L8CX_TARGET_ORDER_CLOSEST);
+    // if(status) {
+    //     return status;
+    // }
 
     status = vl53l8cx_start_ranging(&Dev);
     
