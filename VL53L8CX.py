@@ -57,7 +57,6 @@ class VL53L8CX:
     def read_distance(self):
         
         results = tof_lib.read_vl53l8cx_distance()
-        print(type(results))
-        distance = results.distance_mm
-        target_status = results.target_status
+        distance = results.contents.distance_mm
+        target_status = results.contents.target_status
         return distance, target_status
