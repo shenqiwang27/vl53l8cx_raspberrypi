@@ -35,7 +35,7 @@ while True:
     distance = tof.read_distance()
     # print(distance)
     distance_array = [distance[i] for i in range(64)]
-    # print_8x8_grid(distance_array)
+    print_8x8_grid(distance_array)
     
     distance_matrix = np.clip(distance_array, 0, 4000)
     distance_matrix = distance_matrix / 4000
