@@ -1,35 +1,38 @@
 #!/usr/bin/python
 
 import time,os,sys
+import ctypes
 from ctypes import *
-# from smbus2 import SMBus
-# i2cbus = SMBus(1)
 
-# def i2c_read(address, reg, data_p, length):
-#     ret_val = 0
-#     try:
-#         result = i2cbus.read_i2c_block_data(address, reg, length)
-#         for i in range(length):
-#             data_p[i] = result[i]
-#     except IOError:
-#         print('read IOError')
-#         ret_val = -1
-#     return ret_val
+VL53L8CX_RESOLUTION_8X8 = 64
+VL53L8CX_NB_TARGET_PER_ZONE = 1 
 
+class MotionIndicator(ctypes.Structure):
+    _fields_ = [
+        ("global_indicator_1", ctypes.c_uint32),
+        ("global_indicator_2", ctypes.c_uint32),
+        ("status", ctypes.c_uint8),
+        ("nb_of_detected_aggregates", ctypes.c_uint8),
+        ("nb_of_aggregates", ctypes.c_uint8),
+        ("spare", ctypes.c_uint8),
+        ("motion", ctypes.c_uint32 * 32)
+    ]
 
-# def i2c_write(address, reg, data_p, length):
-#     ret_val = 0
-#     data = [data_p[i] for i in range(length)]
-#     try:
-#         i2cbus.write_i2c_block_data(address, reg, data)
-#     except IOError:
-#         print('write IOError')
-#         ret_val = -1
-#     return ret_val
-
-
+class VL53L8CX_ResultsData(ctypes.Structure):
+    _fields_ = [
+        ("silicon_temp_degc", ctypes.c_int8),
+        ("ambient_per_spad", ctypes.c_uint32 * VL53L8CX_RESOLUTION_8X8),
+        ("nb_target_detected", ctypes.c_uint8 * VL53L8CX_RESOLUTION_8X8),
+        ("nb_spads_enabled", ctypes.c_uint32 * VL53L8CX_RESOLUTION_8X8),
+        ("signal_per_spad", ctypes.c_uint32 * (VL53L8CX_RESOLUTION_8X8 * VL53L8CX_NB_TARGET_PER_ZONE)),
+        ("range_sigma_mm", ctypes.c_uint16 * (VL53L8CX_RESOLUTION_8X8 * VL53L8CX_NB_TARGET_PER_ZONE)),
+        ("distance_mm", ctypes.c_int16 * (VL53L8CX_RESOLUTION_8X8 * VL53L8CX_NB_TARGET_PER_ZONE)),
+        ("reflectance", ctypes.c_uint8 * (VL53L8CX_RESOLUTION_8X8 * VL53L8CX_NB_TARGET_PER_ZONE)),
+        ("target_status", ctypes.c_uint8 * (VL53L8CX_RESOLUTION_8X8 * VL53L8CX_NB_TARGET_PER_ZONE)),
+        ("motion_indicator", MotionIndicator)
+    ]
 tof_lib = CDLL("./bin/vl53l8cx_python.so")
-tof_lib.read_vl53l8cx_distance.restype = POINTER(c_int16)
+tof_lib.read_vl53l8cx_distance.restype = POINTER(VL53L8CX_ResultsData)
 
 # I2C_FUNC = CFUNCTYPE(c_int, c_uint16, c_uint16, 
 #                                     POINTER(c_uint8), c_uint32)
@@ -53,6 +56,7 @@ class VL53L8CX:
     
     def read_distance(self):
         
-        distance = tof_lib.read_vl53l8cx_distance()
-        # dis_arr = [distance_array[i] for i in range(64)]
-        return distance
+        results = tof_lib.read_vl53l8cx_distance()
+        distance = results.distance_mm
+        target_status = results.target_status
+        return distance, target_status

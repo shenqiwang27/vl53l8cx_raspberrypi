@@ -74,7 +74,7 @@ uint8_t init_and_start_vl53l8cx(void)
     return status;
 }
 
-int16_t* read_vl53l8cx_distance(void)
+VL53L8CX_ResultsData* read_vl53l8cx_distance(void)
 {
     uint8_t status;
     uint8_t isReady;
@@ -90,6 +90,6 @@ int16_t* read_vl53l8cx_distance(void)
     if(status) {
         return status;
     }
-    return Results.distance_mm;
+    return &Results;
 
 }
