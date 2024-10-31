@@ -7,6 +7,8 @@
         "type_traits": "c",
         "string.h": "c",
         "unistd.h": "c",
-        "ctype.h": "c"
+        "ctype.h": "c",
+        "platform.h": "c",
+        "vl53l8cx_api.h": "c"
     }
 }
