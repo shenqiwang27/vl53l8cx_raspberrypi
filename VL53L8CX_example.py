@@ -38,7 +38,8 @@ while True:
     
     distance_array = np.array(distance_array)
     target_status_array = np.array(target_status_array)
-    distance_array = np.where(target_status_array != 5, 4000, distance_array)
+    valid_mask = (target_status_array == 5) | (target_status_array == 9)
+    distance_array = np.where(valid_mask, distance_array, 4000)
     
     distance_matrix = np.clip(np.where(distance_array < 0, 4000, distance_array), 0, 4000)
     
