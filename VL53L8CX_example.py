@@ -26,7 +26,7 @@ def print_8x8_grid(list1, list2):
         print()
 
     print(flush=True)
-
+ 
 
 while True:
     count +=1
