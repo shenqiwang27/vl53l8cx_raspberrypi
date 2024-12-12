@@ -47,7 +47,6 @@ while True:
     distance_matrix = np.uint8(distance_matrix * 255)
     distance_matrix = np.array(distance_matrix).reshape(8, 8)
     
-    # 显示图像
     cv2.imshow('Distance Matrix', distance_matrix)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
