@@ -46,6 +46,8 @@ while True:
     distance_matrix = distance_matrix / 4000
     distance_matrix = np.uint8(distance_matrix * 255)
     distance_matrix = np.array(distance_matrix).reshape(8, 8)
+
+    distance_matrix = np.rot90(distance_matrix)
     
     cv2.imshow('Distance Matrix', distance_matrix)
     if cv2.waitKey(1) & 0xFF == ord('q'):
